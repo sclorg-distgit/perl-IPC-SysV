@@ -1,7 +1,7 @@
 %{?scl:%scl_package perl-IPC-SysV}
 
 # Run optional test
-%if ! (0%{?rhel}) || !(0%{?scl:1})
+%if ! (0%{?rhel}) && !(0%{?scl:1})
 %bcond_without perl_IPC_SysV_enables_optional_test
 %else
 %bcond_with perl_IPC_SysV_enables_optional_test
@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}perl-IPC-SysV
 Version:        2.07
-Release:        451%{?dist}
+Release:        452%{?dist}
 Summary:        Object interface to System V IPC
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/IPC-SysV
@@ -67,6 +67,9 @@ find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -delete
 %{_mandir}/man3/*
 
 %changelog
+* Tue Jan 07 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-452
+- Re-rebuild of bootstrapped packages
+
 * Fri Dec 20 2019 Jitka Plesnikova <jplesnik@redhat.com> - 2.07-451
 - SCL
 
